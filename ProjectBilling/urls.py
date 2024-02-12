@@ -19,12 +19,15 @@ from django.urls import path
 from .settings import MEDIA_URL, MEDIA_ROOT, DEBUG
 from django.conf.urls.static import static
 from app_settings.views import *
+from new_tenant.views import tenant_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', main, name='main'),
     path('reg/', Registration, name = 'Registration'),
-    path('auth/', Authorization, name = 'Authorization')
+    path('auth/', Authorization, name = 'Authorization'),
+    path('tenant/', tenant_view, name = 'Tenant'),
 ]
+
 if DEBUG:
     urlpatterns += static(MEDIA_URL, document_root = MEDIA_ROOT)

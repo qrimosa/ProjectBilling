@@ -1,0 +1,72 @@
+{% extends 'app_settings/base.html' %}
+{% load static %}
+{% block content %}
+<div>
+    <br>
+    <h1>Добавить нового арендатора</h1>
+    <form action="" method = "POST">
+        {% csrf_token %}
+        <label for="select1">Торговый комплекс: </label>
+        <select name="mall" id="select1">
+            <option value="Днепр - Зоряный">Днепр - Зоряный</option>
+            <option value="Днепр - Караван">Днепр - Караван</option>
+            <option value="Днепр - МостСити">Днепр - МостСити</option>
+        </select>
+        
+        <label for="contract_num">Номер договора: </label>
+        <input id = 'contract_num' name = 'contract_num' type="text">
+        <p>Срок действия</p>
+        <hr>
+        
+        <label for="contract_start">Начало договора: </label>
+        <input id = 'contract_start' name = 'contract_start' type="date">
+        <label for="contract_end">Дата по: </label>
+        <input id = 'contract_end' name = 'contract_end' type="date"> <br><br>
+        <label for="contract_date">Дата договора: </label>
+        <input id = 'contract_date' name = 'contract_date' type="date">
+        
+        <p>Стороны</p>
+        <hr>
+        
+        <label for="select2">Арендотатель: </label>
+        <select name="landlord" id="select2">
+            <option value="1">123</option>
+        </select>
+
+        <label for="select2">Арендатор: </label>
+        <select name="tenant" id="select3">
+            <option value="2">123</option>
+        </select><br><br>
+        
+        <label for="select4">Арендотатель Р/C: </label>
+        <select name="landlord_r_s" id="select4">
+            <option value="3">123</option>
+        </select>
+        
+        <p>Прочее</p>
+        <hr>
+        
+        <label for="select5">Тип договора: </label>
+        <select name="type_of_contract" id="select5">
+                <option value="">2132</option>
+        </select>
+        
+        <input id="tax" name="tax" type="checkbox">
+        <label for="tax">Налог на рекламу: </label><br>
+        <input id="work" name="work" type="checkbox">
+        <label for="work">В работе: </label><br>
+        <input id="close" name="close" type="checkbox">
+        <label for="close">Закрыт(Архив): </label><br>
+        <label for="commentary">Коментарий: </label>
+        <input id = 'commentary' name = 'commentary' type="text"><br>
+        <label for="contract_num_bill">Номер договора в счете: </label>
+        <input id ='contract_num_bill' name ='contract_num_bill' type="text"><br>
+        <label for="main_contract">Основной договор: </label>
+        <input id ='main_contract' name ='main_contract' type="text"><br>
+        <label for="main_lot">Основной лот: </label>
+        <input id ='main_lot' name ='main_lot' type="text">
+        <button>submit</button>
+    </form>
+</div>
+{% endblock %}
+

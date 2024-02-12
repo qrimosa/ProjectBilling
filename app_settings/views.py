@@ -2,10 +2,11 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.db.utils import IntegrityError
-
+from django.http import JsonResponse
 # Create your views here.
 def main(request):
     return render(request,'app_settings/main.html')
+
 def Registration(request):
     context = {}
     if request.method == 'POST':
@@ -27,8 +28,10 @@ def Registration(request):
                         context['email'] = ''
                         context['login'] = ''
                         context['password']  = ''
+                        response = JsonResponse({'isRegister': True, 'login':login})
                     except IntegrityError:
                         context['error'] = 'Такий користувач вже існує!'
+                    return response
                 else:
                     context['error'] = 'Паролі не співпадають!'
             else:
@@ -52,7 +55,7 @@ def Authorization(request):
             if user:
                 print('login succes')
                 login(request, user)
-                # return redirect('Authorization')
+                return JsonResponse({'isLogin': True, 'username':username})
             else:
                 context['error'] = 'Логін aбо пароль невірний'
         else:

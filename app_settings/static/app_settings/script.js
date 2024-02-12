@@ -55,6 +55,14 @@ $(document).ready(() => {
                 email: $('input[name=email]').val(),
                 login: $('input[name=login]').val(),
                 password: $('input[name=password]').val(),
+            },
+            success: function (response) {
+                if (response.isRegister) {
+                    $('.hello-user-register').text(`Дякуємо за реєстрацію, ${response.login}!`)
+                    $('input[name=login]').val('')
+                    $('input[name=password]').val('')
+                    $('input[name=email]').val('')
+                }
             }
         })
 
@@ -68,8 +76,14 @@ $(document).ready(() => {
                 username: $('input[name=username]').val(),
                 password: $('input[name=loginPassword]').val(),
             },
-            success: function () {
-                window.location.assign("auth")
+            success: function (response) {
+                console.log(response.isLogin)
+                if (response.isLogin) {
+                    $('.hello-user-login').text(`Вітаємо, ${response.username}!`)
+                    $('input[name=username]').val('')
+                    $('input[name=loginPassword]').val('')
+                    // window.location = "auth"
+                }
             }
         })
     })

@@ -17,6 +17,8 @@
     <header>
         <div class="button">
             <a href="#" id="open_pop_up">Зареєструватися</a>
+            <a href="{% url 'Tenant' %}">Додати нового арендотадора</a>
+            <a href="{% url 'main' %}">Головна</a>
         </div>
         <div class="pop_up" id="pop_up">
             <div class="pop_up_container">
@@ -24,6 +26,7 @@
                     <p></p>
                     <form action="">
                         {% csrf_token %}
+                        <p class="hello-user-register"></p>
                         <input type="text" name="login" placeholder="Логін">
                         <input type="text" name="email" placeholder="Пошта">
                         <input type="password" name="password" value="{{password}}" placeholder="Пароль">
@@ -36,6 +39,7 @@
                     <p></p>
                     <form action="">
                         {% csrf_token %}
+                        <p class="hello-user-login"></p>
                         <input type="text" name="username" placeholder="Логін">
                         <input type="password" name="loginPassword" placeholder="Пароль">
                         <button class="button2" type="button">Відправити</button>
