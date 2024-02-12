@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="{% static 'app_settings/jquery-3.7.1.min.js' %}"></script>
+    <script src="{% static 'app_settings/script.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'app_settings/style.css' %}">
+    {% block links %}
+    {% endblock %}
+</head>
+
+<body>
+    <header>
+        <div class="button">
+            <a href="#" id="open_pop_up">Зареєструватися</a>
+        </div>
+        <div class="pop_up" id="pop_up">
+            <div class="pop_up_container">
+                <div class="pop_up_body" id="pop_up_body">
+                    <p></p>
+                    <form action="">
+                        {% csrf_token %}
+                        <input type="text" name="login" placeholder="Логін">
+                        <input type="text" name="email" placeholder="Пошта">
+                        <input type="password" name="password" value="{{password}}" placeholder="Пароль">
+                        <button class="button" type="button">Відправити</button>
+                        <a href="#" class="registerClick">У мене вже є аккаунт</a>
+                    </form>
+                    <div class="pop_up_close" id="close_pop_up">&#10006</div>
+                </div>
+                <div class="pop_up_body" id="pop_up_body_login">
+                    <p></p>
+                    <form action="">
+                        {% csrf_token %}
+                        <input type="text" name="username" placeholder="Логін">
+                        <input type="password" name="loginPassword" placeholder="Пароль">
+                        <button class="button2" type="button">Відправити</button>
+                        <a href="#" class="loginClick">У мене немає аккаунту</a>
+                    </form>
+                    <div class="pop_up_close" id="close_pop_up">&#10006</div>
+                </div>
+            </div>
+        </div>
+        <a href=""></a>
+        <a href=""></a>
+        <a href=""></a>
+    </header>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer>
+
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+{% extends 'app_settings/base.html' %}
+{% load static %}
+{% block links %}
+<link rel="stylesheet" href="{% static 'app_settings/style.css' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@500&family=Inria+Sans:wght@700&family=Open+Sans:ital,wght@0,500;1,400&family=PT+Sans+Narrow&family=Roboto:wght@500&display=swap" rel="stylesheet">
+<script src="{% static 'app_settings/jquery-3.7.1.min.js' %}" defer></script>
+<script src="{% static 'app_settings/script.js' %}" defer></script>
+{% endblock %}
+{% block content %}
+<div class="reg">
+    <h1>Registration</h1>
+    <form action="#" method="POST">
+        {% csrf_token %}
+        <input type="email" class = "input" name="email" placeholder="Your Email" value="{{email}}">
+        <input type="text" class = "input" name="login" placeholder="Your Username" value="{{login}}">
+        <input type="password" class = "input" name="password" placeholder="Your Password">
+        <input type="password" class = "input" name="confirm_password" placeholder="Repeat Password">
+        <!-- <div class="checkbox">
+            <input type="checkbox" name="checkbox" id="">
+            <p>I agree with all of terms and conditions</p>
+        </div> -->
+        {% if error %}
+        <p class="eror">{{error}}</p>
+        {% endif %}
+    </form>
+    <input type="submit" class = "button" value="Send">  
+</div>
+{% endblock %}

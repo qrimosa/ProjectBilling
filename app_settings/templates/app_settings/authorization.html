@@ -1,0 +1,27 @@
+{% extends 'app_settings/base.html' %}
+{% load static %}
+{% block links %}
+<link rel="stylesheet" href="{% static 'app_settings/style.css' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+    href="https://fonts.googleapis.com/css2?family=Gabarito:wght@500&family=Inria+Sans:wght@700&family=Open+Sans:ital,wght@0,500;1,400&family=PT+Sans+Narrow&family=Roboto:wght@500&display=swap"
+    rel="stylesheet">
+<script src="{% static 'app_settings/jquery-3.7.1.min.js' %}" defer></script>
+<script src="{% static 'app_settings/script.js' %}" defer></script>
+{% endblock %}
+{% block content %}
+<div class="reg">
+    <h1>Login</h1>
+    <form action="#" method="POST">
+        {% csrf_token %}
+        <input type="text" class="input" name="username" placeholder="Your Username">
+        <input type="password" class="input" name='password' placeholder="Your Password">
+        {% if error %}
+        <p class="error">{{error}}</p>
+        {% endif %}
+    </form>
+    <input type="submit" class="button2" id='button_send' value="Send">
+
+</div>
+{% endblock %}
