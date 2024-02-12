@@ -20,6 +20,12 @@ def tenant_view(request):
         contract_num_bill = request.POST.get('contract_num_bill')
         main_contract = request.POST.get('main_contract')
         main_lot = request.POST.get('main_lot')
+        if tax is None:
+            tax = 'off'
+        if work is None:
+            work = 'off'
+        if close is None:
+            close = 'off'
         Tenant.objects.create(complex = mall, number_contract=contract_num, 
                               end_contract=contract_end, start_contract = contract_start,
                                 date_contract = contract_date, tenant_name=landlord, owner_name = tenant,
